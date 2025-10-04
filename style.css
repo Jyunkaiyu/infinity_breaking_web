@@ -1,0 +1,355 @@
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Sans+TC:wght@400;700&display=swap');
+
+/* --- 全域設定 (Global Settings) --- */
+:root {
+    --primary-color: #FFDE00; /* 亮黃色，營造活力感 */
+    --dark-color: #1a1a1a;    /* 深黑色背景 */
+    --light-color: #ffffff;   /* 白色文字 */
+    --grey-color: #333333;    /* 卡片背景或次要背景 */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif; /* 中文使用思源黑體 */
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bangers', cursive; /* 標題使用 Hip-Hop 風格字體 */
+    letter-spacing: 2px;
+    color: var(--primary-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 2rem;
+    overflow: hidden;
+}
+
+/* --- 導覽列 (Navbar) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--grey-color);
+}
+
+.navbar .logo {
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.navbar .nav-links {
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 2rem;
+}
+
+.navbar .nav-links a {
+    color: var(--light-color);
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover,
+.navbar .nav-links a.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* --- 漢堡選單 (Mobile Menu) --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--light-color);
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+
+/* --- 主要內容區塊 (Main Content Area) --- */
+.main-content {
+    padding-top: 100px; /* 避免內容被導覽列遮住 */
+    padding-bottom: 50px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.page-header h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+}
+
+/* --- 按鈕 (Buttons) --- */
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-color);
+    color: var(--dark-color);
+}
+
+/* --- 首頁 Hero Banner --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1920x1080/1a1a1a/ffffff?text=ENERGETIC+DANCE+PHOTO') no-repeat center center/cover;
+}
+
+.hero h1 {
+    font-size: 6rem;
+    margin-bottom: 0;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+/* --- 首頁最新消息 --- */
+.announcements {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.announcements h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.event-card {
+    background: var(--grey-color);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.event-card h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* --- 關於我們頁面 --- */
+.about-section, .team-section, .milestones-section {
+    margin-bottom: 4rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.team-member {
+    background: var(--grey-color);
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 10px;
+}
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color);
+}
+
+.team-member h3 {
+    font-size: 1.8rem;
+}
+
+.team-member p {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* --- 活動回顧頁面 --- */
+.filter-buttons {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    background: var(--grey-color);
+    color: var(--light-color);
+    border: none;
+    padding: 0.7rem 1.5rem;
+    margin: 0.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: var(--primary-color);
+    color: var(--dark-color);
+}
+
+.recap-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: var(--light-color);
+    padding: 2rem 1rem 1rem;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .overlay {
+    transform: translateY(0);
+}
+
+/* --- 聯絡我們 & 會員專區 --- */
+.form-container, .member-portal {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 3rem;
+    background: var(--grey-color);
+    text-align: center;
+    border-radius: 10px;
+}
+
+.social-links a {
+    font-size: 2rem;
+    margin: 0 1rem;
+}
+
+/* --- 頁尾 (Footer) --- */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--grey-color);
+    margin-top: 3rem;
+}
+
+/* --- 響應式設計 (Responsive Design) --- */
+@media(max-width: 768px) {
+    .navbar .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background: var(--dark-color);
+        text-align: center;
+    }
+
+    .navbar .nav-links.active {
+        display: flex;
+    }
+
+    .navbar .nav-links li {
+        margin: 1.5rem 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+    
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .page-header h1 {
+        font-size: 3rem;
+    }
+}
