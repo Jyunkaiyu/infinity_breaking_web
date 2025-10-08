@@ -51,11 +51,69 @@
         .filter-btn:hover, .filter-btn.active { background: var(--primary-color); color: var(--dark-color); border-color: var(--primary-color); }
         
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .gallery-item { position: relative; overflow: hidden; border-radius: 10px; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+        .gallery-item { 
+            position: relative; 
+            overflow: hidden; 
+            border-radius: 10px;
+            cursor: pointer; /* 新增手形游標 */
+        }
+        .gallery-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* 維持您原本的 cover 樣式 */
+            display: block; 
+            transition: transform 0.4s ease; 
+        }
         .gallery-item:hover img { transform: scale(1.1); }
         .gallery-item .overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: var(--light-color); padding: 2rem 1rem 1rem; transform: translateY(100%); transition: transform 0.4s ease; }
         .gallery-item:hover .overlay { transform: translateY(0); }
+
+        /* --- 彈出視窗 Modal --- */
+        .modal-overlay {
+            display: none; /* 預設隱藏 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+        }
+        .modal-content {
+            position: relative;
+            background: var(--grey-color);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .modal-close-btn:hover { color: var(--primary-color); }
+        #modal-img {
+            max-width: 100%;
+            max-height: 65vh;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+        #modal-title { font-size: 2rem; margin-bottom: 0.5rem; }
+        #modal-description { color: #ccc; }
 
         /* --- 頁尾 (Footer) --- */
         .footer { text-align: center; padding: 4rem 2rem; background: var(--grey-color); }
@@ -111,33 +169,43 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item" data-category="battle">
-                    <img src="" alt="Event 1">
+                <div class="gallery-item" data-category="battle" data-description="由屏東在地舞團信天翁舉辦的屏東breaking賽事 Share our Love">
+                    <img src="./image/share_our_love.jpg" alt="Event 1">
                     <div class="overlay"><h3>Share our Love Vol.5</h3><p>年度指標性賽事</p></div>
                 </div>
-                <div class="gallery-item" data-category="course">
-                    <img src="" alt="Event 2">
+                <div class="gallery-item" data-category="course" data-description="由Infinity Break Lab 的專業師資開辦的免費Breaking 研習營。<br>詳情請至上方的「年度承辦計畫」裡搜尋Breaking學習營的表單報名">
+                    <img src="./image/訓練圖.jpg" alt="Event 2">
                     <div class="overlay"><h3>暑期 Breaking 研習營</h3><p>為期五天的密集訓練</p></div>
                 </div>
-                <div class="gallery-item" data-category="seminar">
-                    <img src="" alt="Event 3">
+                <div class="gallery-item" data-category="seminar" data-description="Breaking 文化講座將會分享Breaking的歷史事如何從地下舞蹈到登上世界舞台<br>講座活動時間將會發布於粉專，請右上角追蹤粉專鎖定最新消息">
+                    <img src="./image/街舞到奧運.jpg" alt="Event 3">
                     <div class="overlay"><h3>Breaking 文化講座</h3><p>從街頭到奧運的歷史</p></div>
                 </div>
-                <div class="gallery-item" data-category="exhibition">
-                    <img src="" alt="Event 4">
+                <div class="gallery-item" data-category="exhibition" data-description="街頭文化攝影展活動<br>活動時間將會發布於粉專，請右上角追蹤粉專鎖定最新消息">
+                    <img src="./image/力與美.jpg" alt="Event 4">
                     <div class="overlay"><h3>街頭文化攝影展</h3><p>捕捉瞬間的力與美</p></div>
                 </div>
-                <div class="gallery-item" data-category="battle">
-                    <img src="" alt="Event 5">
+                <div class="gallery-item" data-category="battle" data-description="高中生聯盟賽<br>活動時間將會發布於粉專，請右上角追蹤粉專鎖定最新消息">
+                    <img src="./image/新生代.jpg" alt="Event 5">
                     <div class="overlay"><h3>高中生聯盟賽</h3><p>新生代 B-boy 崛起</p></div>
                 </div>
-                 <div class="gallery-item" data-category="course">
-                    <img src="" alt="Event 6">
+                 <div class="gallery-item" data-category="course" data-description="週末技巧加強班<br>活動時間將會發布於粉專，請右上角追蹤粉專鎖定最新消息。">
+                    <img src="./image/周末技巧.jpg" alt="Event 6">
                     <div class="overlay"><h3>週末技巧加強班</h3><p>針對特定動作的精進</p></div>
                 </div>
             </div>
         </div>
     </main>
+    
+    <!-- 彈出視窗的 HTML 結構 -->
+    <div id="gallery-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="modal-close-btn">&times;</span>
+            <img id="modal-img" src="" alt="活動照片放大">
+            <h3 id="modal-title"></h3>
+            <p id="modal-description"></p>
+        </div>
+    </div>
 
     <footer class="footer">
         <p>&copy; 2025 Infinity Break. All Rights Reserved.</p>
@@ -175,6 +243,57 @@
                             }
                         });
                     });
+                });
+            }
+            
+            // --- 彈出視窗功能 ---
+            const modal = document.getElementById('gallery-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const closeModalBtn = modal.querySelector('.modal-close-btn');
+
+            if (modal) {
+                galleryItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        const img = item.querySelector('img');
+                        const imgSrc = img ? img.src : '';
+                        const title = item.querySelector('.overlay h3').textContent;
+                        let description = item.dataset.description || item.querySelector('.overlay p').textContent;
+
+                        // 檢查是否為 Share our Love Vol.5，如果是，則加上超連結
+                        if (title === 'Share our Love Vol.5') {
+                            description += `<br><p style="margin-top: 1rem;"><a href="https://www.youtube.com/watch?v=tCVqweCpx_M" target="_blank" style="color: var(--primary-color); font-weight: bold; text-decoration: underline;">觀看連結 &rarr;</a></p>`;
+                        }
+                        // 檢查是否為 Breaking 文化講座，如果是，則加上超連結
+                        if (title === 'Breaking 文化講座') {
+                            description += `<br><p style="margin-top: 1rem;"><a href="https://www.youtube.com/watch?v=D6Wod_9o6GU" target="_blank" style="color: var(--primary-color); font-weight: bold; text-decoration: underline;">觀看連結 &rarr;</a></p>`;
+                        }
+
+                        modalImg.src = imgSrc;
+                        // 如果圖片路徑為空，或圖片載入失敗，則顯示預設圖片
+                        if (!imgSrc) {
+                           modalImg.src = 'https://placehold.co/600x400/000000/FFDE00?text=Image';
+                        }
+                        
+                        modalTitle.textContent = title;
+                        // 使用 innerHTML 以便解析 a 標籤
+                        modalDescription.innerHTML = description; 
+                        
+                        modal.style.display = 'flex';
+                    });
+                });
+
+                const closeModal = () => {
+                    modal.style.display = 'none';
+                }
+
+                closeModalBtn.addEventListener('click', closeModal);
+
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
                 });
             }
         });
