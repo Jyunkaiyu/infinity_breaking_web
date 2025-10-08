@@ -21,4 +21,4 @@
 
 [Cloud] - [baby891201baby8471@gmail.com]
 
-專案連結: [https://github.com/[您的帳號]/[您的專案名稱]](https://github.com/[您的帳號]/[您的專案名稱])
+專案連結: https://jyunkaiyu.github.io/infinity_breaking_web/
