@@ -6,17 +6,13 @@
     <title>聯絡我們 - Infinity Break</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* --- Google Fonts --- */
         @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Noto+Sans+TC:wght@400;700&display=swap');
-
-        /* --- 全域設定 (Global Settings) --- */
         :root {
             --primary-color: #FFDE00;
             --dark-color: #1a1a1a;
             --light-color: #ffffff;
             --grey-color: #333333;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--dark-color); color: var(--light-color); line-height: 1.8; }
@@ -25,10 +21,7 @@
         p { font-size: 1.1rem; margin-bottom: 1rem; }
         ul { list-style: none; }
         .container { max-width: 1100px; margin: auto; padding: 0 2rem; }
-
-        /* --- 導覽列 (Navbar) --- */
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: rgba(26, 26, 26, 0.8); position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(10px); transition: background 0.3s ease; }
-        .navbar.scrolled { background: rgba(26, 26, 26, 0.95); }
         .navbar .logo { font-family: 'Bangers', cursive; font-size: 2rem; color: var(--primary-color); }
         .nav-menu { display: flex; align-items: center; }
         .nav-links { display: flex; }
@@ -39,28 +32,62 @@
         .nav-social-links a:hover { color: var(--primary-color); transform: scale(1.1); }
         .hamburger { display: none; cursor: pointer; }
         .hamburger .bar { width: 25px; height: 3px; background-color: var(--light-color); margin: 5px 0; transition: 0.4s; }
-
-        /* --- 通用頁面內容樣式 (General Page Styles) --- */
         .main-content { padding-top: 100px; }
         .page-header { text-align: center; padding: 4rem 0; background: var(--grey-color); margin-bottom: 4rem; }
         .page-header h1 { font-size: 4rem; }
         
         /* --- 聯絡頁面專屬樣式 --- */
-        .form-container { max-width: 600px; margin: 2rem auto; padding: 3rem; background: var(--grey-color); text-align: center; border-radius: 10px; }
-        .form-container h2 { font-size: 2.5rem; }
-        .btn { display: inline-block; padding: 0.8rem 1.5rem; border-radius: 5px; margin: 0 0.5rem; transition: all 0.3s ease; font-weight: bold; }
-        .btn-primary { background-color: var(--primary-color); color: var(--dark-color); border: 2px solid var(--primary-color); }
-        .btn-primary:hover { background-color: transparent; color: var(--primary-color); }
-        .page-social-links { margin-top: 2rem;}
-        .page-social-links a { font-size: 2.5rem; margin: 0 1rem; color: var(--light-color); }
-        .page-social-links a:hover { color: var(--primary-color); }
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            background-color: var(--grey-color);
+            padding: 3rem;
+            border-radius: 10px;
+            margin-bottom: 4rem; /* 新增與頁尾的間距 */
+        }
+        .contact-info h3 { font-size: 2rem; margin-bottom: 1.5rem; }
+        .contact-info p { color: #ccc; }
+        .contact-info .social-links { margin-top: 2rem; }
+        .contact-info .social-links a { font-size: 2rem; margin-right: 1.5rem; color: var(--light-color); transition: color 0.3s ease; }
+        .contact-info .social-links a:hover { color: var(--primary-color); }
 
-        /* --- 頁尾 (Footer) --- */
+        .contact-form .form-group { margin-bottom: 1.5rem; }
+        .contact-form label { display: block; margin-bottom: 0.5rem; font-weight: bold; color: var(--primary-color); }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background-color: var(--dark-color);
+            border: 2px solid #444;
+            border-radius: 5px;
+            color: var(--light-color);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        .contact-form textarea { resize: vertical; min-height: 150px; }
+        .btn-submit {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            border: none;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-submit:hover { transform: scale(1.05); }
+
         .footer { text-align: center; padding: 4rem 2rem; background: var(--grey-color); }
         .footer .sponsor-text { font-size: 0.9rem; color: #aaa; margin-top: 1rem; }
-
-        /* --- RWD --- */
+        
         @media (max-width: 768px) {
+            .contact-wrapper { grid-template-columns: 1fr; }
             .nav-menu { flex-direction: column; align-items: center; position: absolute; top: 100%; left: 0; background: var(--dark-color); width: 100%; padding: 1rem 0; max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
             .nav-menu.active { max-height: 500px; }
             .nav-links { flex-direction: column; width: 100%; }
@@ -88,9 +115,7 @@
             </div>
         </div>
         <div class="hamburger">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
         </div>
     </nav>
     
@@ -100,17 +125,35 @@
                 <h1>Contact Us</h1>
             </header>
 
-            <div class="form-container">
-                <h2>有任何問題嗎？</h2>
-                <p>無論是課程詢問、活動合作或任何建議，都歡迎透過以下方式與我們聯繫！</p>
-                <br>
-                <a href="{{INSERT FORM LINK}}" target="_blank" class="btn btn-primary">填寫詢問表單</a>
-                <br><br>
-                <h3>追蹤我們的社群</h3>
-                <div class="page-social-links">
-                    <a href="https://www.facebook.com/share/1XJh148dia/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
-                    <a href="https://www.instagram.com/infinitybreak19?igsh=d3YyOWh2bnkwb3hk&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>聯絡資訊</h3>
+                    <p>有任何問題嗎？<br>無論是課程詢問、活動合作或任何建議，都歡迎填寫右側表單，我們會盡快回覆您！</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1XJh148dia/?mibextid=wwXIfr" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://www.instagram.com/infinitybreak19?igsh=d3YyOWh2bnkwb3hk&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
+                
+                <form class="contact-form" action="https://formspree.io/f/baby891201baby8471@gmail.com" method="POST">
+                    <div class="form-group">
+                        <label for="name">姓名 Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">您的電子郵件 Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <!-- 主旨欄位已隱藏，並會自動送出預設值 -->
+                    <input type="hidden" name="subject" value="infinity break網頁消息">
+
+                    <div class="form-group">
+                        <label for="message">訊息 Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">傳送訊息</button>
+                </form>
             </div>
         </div>
     </main>
