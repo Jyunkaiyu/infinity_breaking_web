@@ -74,7 +74,8 @@
         .close-btn:hover, .close-btn:focus { color: var(--light-color); text-decoration: none; cursor: pointer; }
 
         /* --- 頁尾 (Footer) --- */
-        .footer { text-align: center; padding: 3rem; background: var(--grey-color); margin-top: 4rem; }
+        .footer { text-align: center; padding: 4rem 2rem; background: var(--grey-color); }
+        .footer .sponsor-text { font-size: 0.9rem; color: #aaa; margin-top: 1rem; }
         
         /* --- RWD --- */
         @media (max-width: 768px) {
@@ -117,34 +118,34 @@
                 <h2>團隊成員 Our Team</h2>
                 <div class="team-grid">
                     <div class="team-member" data-details="<h4>學歷:</h4><p>國立屏東大學文化創意產業學習碩士班畢業</p><h4>經歷:</h4><p>2017~2019屏東圓夢計畫青少年錄取者<br>2025教育部青年發展署青年百億海外圓夢基金計畫專案執行人</p>">
-                        <!-- 請在此 src 中填入 陳冠宇 的照片網址 -->
                         <img src="./image/陳冠宇-removebg-preview.png" alt="陳冠宇">
                         <h3>陳冠宇</h3>
                         <p><strong>主理人</strong><br>擘劃團隊願景，整合資源推動文化發展。</p>
                     </div>
                     <div class="team-member" data-details="<h4>舞風專長:</h4><p>霹靂舞（Breaking）</p><h4>教學經歷:</h4><p>2017–2018 屏東高中熱舞社 B 組 指導教師<br>2017–2019 屏東縣政府「Share our Love」公益教學計畫</p><h4>競賽經歷:</h4><p>2025 年《Battle of Half Year VOL.3》冠軍</p>">
-                        <!-- 請在此 src 中填入 葉宸廷 的照片網址 -->
                         <img src="./image/宸廷-removebg-preview.png" alt="葉宸廷">
                         <h3>葉宸廷</h3>
                         <p><strong>常態課程教師</strong><br>比賽常勝軍，實戰經驗豐富，擅長高難度動作教學。</p>
                     </div>
                     <div class="team-member" data-details="<h4>舞風專長:</h4><p>霹靂舞（Breaking）</p><h4>教學經歷:</h4><p>萌世代街舞代課教師</p><h4>專業認證:</h4><p>霹靂舞 C 級裁判證</p>">
-                        <!-- 請在此 src 中填入 林聖翔 的照片網址 -->
                         <img src="./image/林聖翔-removebg-preview.png" alt="林聖翔">
                         <h3>林聖翔</h3>
                         <p><strong>常態課程教師</strong><br>擁有合格裁判證照，對動作結構與評分標準有深入理解。</p>
                     </div>
                     <div class="team-member" data-details="<h4>舞風專長:</h4><p>霹靂舞（Breaking）</p><h4>教學經歷:</h4><p>屏榮高中街舞社社團老師</p><h4>專業認證:</h4><p>街舞全民檢定B-1</p>">
-                        <!-- 請在此 src 中填入 許育維 的照片網址 -->
                         <img src="./image/許育維-removebg-preview.png" alt="許育維">
                         <h3>許育維</h3>
                         <p><strong>常態課程教師</strong><br>持有合格教練證，教學風格細膩，深受學員喜愛。</p>
                     </div>
                     <div class="team-member" data-details="<h4>學歷:</h4><p>國立屏東大學應用物理系畢業</p><h4>經歷:</h4><p>吳念真基金會麟洛國中課後輔導老師<br>內埔國小課後輔導老師<br>高雄名佳補習班國中數學&物理老師<br>屏東台大威斯國中物理老師<br>屏東啄木鳥補習班國中物理老師<br>東港國中、高中補習班物理老師</p>">
-                        <!-- 請在此 src 中填入 林振銘 的照片網址 -->
                         <img src="./image/振銘改-removebg-preview.png" alt="林振銘">
                         <h3>林振銘</h3>
                         <p><strong>學習陪伴導師</strong><br>具備物理/數學教師背景，能以科學角度解析舞蹈動作。</p>
+                    </div>
+                    <div class="team-member" data-details="<h4>學歷:</h4><p>國立屏東大學資訊管理系畢業</p><h4>經歷:</h4><p>做這個網頁<br>拍一堆影片<br>覺得網頁不錯可以來找我合作喔: D</p>">
+                        <img src="./image/隱藏小編.png" alt="隱藏小編">
+                        <h3>隱藏小編</h3>
+                        <p><strong>數位人員</strong><br>做網頁的跟偶爾貼貼文的。</p>
                     </div>
                 </div>
             </section>
@@ -155,7 +156,6 @@
     <div id="teamModal" class="modal">
       <div class="modal-content">
         <span class="close-btn">&times;</span>
-        <!-- 彈出視窗的大圖，JS 會自動填入照片網址 -->
         <img src="" alt="團隊成員照片" id="modal-img">
         <h2 id="modal-name"></h2>
         <div id="modal-details"></div>
@@ -164,6 +164,7 @@
 
     <footer class="footer">
         <p>&copy; 2025 Infinity Break. All Rights Reserved.</p>
+        <p class="sponsor-text">教育部青年發展署 青年海外百億圓夢計畫</p>
     </footer>
 
     <script>
@@ -194,7 +195,7 @@
                     
                     modalName.textContent = name;
                     modalDetails.innerHTML = details;
-                    modalImg.src = imgSrc || 'https://placehold.co/150x150/333333/FFDE00?text=?'; // 如果沒照片就用預設圖
+                    modalImg.src = imgSrc || 'https://placehold.co/150x150/333333/FFDE00?text=?';
                     modalImg.alt = name;
 
                     modal.style.display = 'block';

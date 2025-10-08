@@ -47,24 +47,46 @@
         .hamburger { display: none; cursor: pointer; }
         .hamburger .bar { width: 25px; height: 3px; background-color: var(--light-color); margin: 5px 0; transition: 0.4s; }
 
-        /* --- 主視覺 (Hero Section) --- */
+        /* --- 主視覺影片背景 (Hero Section with Video) --- */
         .hero {
             height: 100vh;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 2rem;
-            position: relative;
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('');
+            overflow: hidden; /* 確保影片不會超出範圍 */
+        }
+        #hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .hero::after { /* 新增黑色遮罩 */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        .hero-content {
+             position: relative; /* 確保內容在遮罩之上 */
+             z-index: 1;
         }
         .hero h1 { font-size: 5rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
         .hero p { font-size: 1.5rem; margin-bottom: 2rem; }
-        .scroll-down-arrow { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); font-size: 2rem; animation: bounce 2s infinite; }
+        .scroll-down-arrow { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); font-size: 2rem; animation: bounce 2s infinite; z-index: 1; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-20px); } 60% { transform: translateY(-10px); } }
 
         /* --- 關於我們區塊 (About Us Section on Homepage) --- */
@@ -117,10 +139,9 @@
             border-radius: 10px;
             flex-shrink: 0;
         }
-        /* 修正後的跑馬燈動畫 */
         @keyframes marquee-scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* 移動總寬度的一半，達成無縫接軌 */
+            100% { transform: translateX(-50%); } 
         }
 
         /* --- 里程碑照片藝廊 (維持您的設定) --- */
@@ -192,8 +213,15 @@
     </nav>
 
     <header class="hero">
-        <h1>Infinity Break</h1>
-        <p>Break The Limit, Beyond Infinity</p>
+        <!-- 背景影片 -->
+        <video autoplay muted loop playsinline id="hero-video">
+            <!-- 建議使用全英文檔名以確保相容性 -->
+            <source src="./video/信天翁2.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Infinity Break</h1>
+            <p>Break The Limit, Beyond Infinity</p>
+        </div>
         <a href="#about-section-1" class="scroll-down-arrow"><i class="fas fa-chevron-down"></i></a>
     </header>
 
@@ -204,8 +232,9 @@
                     <h2>背景 Background</h2>
                     <p>我們是一群自2016年起就集結在一起的 b-boys。成員來自各行各業，有老師、教練、裁判，甚至還有物理老師！我們因對 Breaking 的熱愛而相識，共同見證了屏東地區街舞文化的起起落落。隨著 Breaking 登上奧運殿堂，我們決定成立 Infinity Break，希望能系統性地傳承文化，並為新生代舞者打造一個更完善的舞台。</p>
                 </div>
-                <div class="about-image">
-                    <img src="" alt="團隊活動照片">
+                <div class="about-image gallery-row">
+                    <img src="./image/背景1.jpg" alt="團隊活動照片">
+                    <img src="./image/背景3.jpg" alt="團隊活動照片">
                 </div>
             </section>
         </div>
@@ -236,8 +265,9 @@
                     <h2>核心價值 Core Values</h2>
                     <p>我們深信，文化是流動的，唯有不斷地傳承與創新，才能讓 Breaking 的火炬永不熄滅。我們致力於連結不同世代、不同領域的夥伴，共同為台灣的街舞文化貢獻心力。</p>
                 </div>
-                <div class="about-image">
-                    <img src="" alt="團隊討論或教學照片">
+                <div class="about-image gallery-row">
+                    <img src="./image/教學1.jpg" alt="團隊討論或教學照片">
+                    <img src="./image/教學2.jpg" alt="團隊討論或教學照片">
                 </div>
             </section>
         </div>
@@ -283,8 +313,6 @@
                     navbar.classList.remove('scrolled');
                 }
             });
-
-            // 跑馬燈的 JavaScript 已不再需要，純 CSS 即可實現無縫循環
         });
     </script>
 </body>

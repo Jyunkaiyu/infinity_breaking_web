@@ -48,15 +48,77 @@
         
         /* --- 計畫頁面專屬樣式 --- */
         .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem;}
-        .event-card { background-color: var(--grey-color); padding: 2rem; border-radius: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .event-card { 
+            background-color: var(--grey-color); 
+            padding: 2rem; 
+            border-radius: 10px; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            display: flex; /* 使用 Flexbox 佈局 */
+            flex-direction: column; /* 讓內容垂直排列 */
+        }
         .event-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(255, 222, 0, 0.1); }
-        .event-card h3 { margin-bottom: 1rem; font-size: 1.8rem;}
+        .event-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            min-height: 3.6em; /* 設定最小高度以容納兩行標題，確保下方內容對齊 */
+        }
+        .event-card p {
+            flex-grow: 1; /* 讓 p 標籤自動填滿多餘的空間，將下面的元素推到底部 */
+        }
+        .signup-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            transition: letter-spacing 0.3s ease;
+        }
+        .signup-link:hover {
+            letter-spacing: 1px;
+            text-decoration: underline;
+        }
+        .coming-soon {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
 
+        .philosophy-section { padding-bottom: 4rem; }
         .philosophy-section h2 { font-size: 2.5rem; margin-bottom: 1.5rem; text-align: center;}
         .philosophy-section p { text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;}
 
+        /* --- IG 追蹤區塊 --- */
+        .ig-cta-section {
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+        }
+        .ig-cta-link {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--light-color);
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .ig-cta-link:hover {
+            transform: scale(1.05);
+            color: var(--primary-color);
+        }
+        .ig-cta-link .fab.fa-instagram {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            /* IG 漸層色 */
+            background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .ig-cta-link h3 {
+            font-size: 1.5rem;
+            color: inherit; /* 繼承父元素 a 的顏色 */
+        }
+
         /* --- 頁尾 (Footer) --- */
-        .footer { text-align: center; padding: 3rem; background: var(--grey-color); margin-top: 4rem; }
+        .footer { text-align: center; padding: 4rem 2rem; background: var(--grey-color); }
+        .footer .sponsor-text { font-size: 0.9rem; color: #aaa; margin-top: 1rem; }
 
         /* --- RWD --- */
         @media (max-width: 768px) {
@@ -103,26 +165,38 @@
                 <div class="event-card">
                     <h3>1. Breaking 學習營</h3>
                     <p>專為各年齡層設計的系統化課程，從基礎律動到進階技巧，由我們的專業師資親自指導，打造最扎實的舞蹈基礎。</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScDtEWrNXmswad-gahPRvchgNDG7ALL14siyN0OqEHkDfa-dQ/viewform" target="_blank" class="signup-link">由此填表單報名 &rarr;</a>
                 </div>
                 <div class="event-card">
                     <h3>2. 12/20 屏東新舊世代交流賽</h3>
                     <p>這不只是一場比賽，更是一個文化交流的平台。我們將邀請資深舞者與新生代 B-boys & B-girls 同場競技，激盪出傳承的火花。</p>
+                    <span class="coming-soon">敬請期待</span>
                 </div>
                 <div class="event-card">
                     <h3>3. RE:屏東 展覽 (暫名)</h3>
                     <p>透過靜態與動態的展示，回顧屏東 Breaking 的發展史，讓大眾更深入地了解這項即將登上奧運殿堂的藝術運動。</p>
+                    <span class="coming-soon">敬請期待</span>
                 </div>
             </div>
+
+            <section class="ig-cta-section">
+                <a href="https://www.instagram.com/infinitybreak19?igsh=d3YyOWh2bnkwb3hk&utm_source=qr" target="_blank" class="ig-cta-link">
+                    <i class="fab fa-instagram"></i>
+                    <h3>最新活動請關注 IG 發文</h3>
+                </a>
+            </section>
 
             <section class="philosophy-section">
                 <h2>計畫理念</h2>
                 <p>我們的所有計畫都圍繞著「傳承、創新、連結」三大核心，希望能藉由多元的活動形式，不僅是推廣 Breaking 舞蹈，更是要將這份文化底蘊深植於在地青年心中，創造一個共榮共好的街舞環境。</p>
             </section>
+
         </div>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2024 Infinity Break. All Rights Reserved.</p>
+        <p>&copy; 2025 Infinity Break. All Rights Reserved.</p>
+        <p class="sponsor-text">教育部青年發展署 青年海外百億圓夢計畫</p>
     </footer>
 
     <script>
@@ -138,3 +212,4 @@
     </script>
 </body>
 </html>
+
